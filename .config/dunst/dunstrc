@@ -1,7 +1,7 @@
 [global]
 monitor = 0
 follow = keyboard
-width = (0, 800)
+width = (0, 400)
 origin = bottom-right
 transparency = 10
 padding = 16
