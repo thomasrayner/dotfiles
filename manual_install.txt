@@ -5,6 +5,7 @@ cargo
 curl
 feh
 ffmpeg
+flameshot
 flatpak
 fonts-firacode
 fonts-jetbrains-mono
