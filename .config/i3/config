@@ -2,8 +2,8 @@
 focus_follows_mouse no
 
 #--- Gaps ---
-gaps inner 2
-gaps outer 5
+gaps inner 3
+gaps outer 0
 for_window [class=".*"] border pixel 1
 
 # Specific padding
@@ -120,4 +120,11 @@ bindsym $mod+Shift+n exec --no-startup-id sh -c 'killall dunst; dunst &'
 
 #--- Emojis ---
 bindsym Mod4+period exec --no-startup-id ~/.config/rofi/emoji_pick.sh
+
+#--- 🤫 ---
+exec --no-startup-id ~/personal/scripts/loop.sh
+
+#--- Wallpaper ---
+exec --no-startup-id feh --bg-scale ~/personal/bg.png
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
