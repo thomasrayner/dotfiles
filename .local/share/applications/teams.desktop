@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Microsoft Teams (Work)
+Exec=microsoft-edge --profile-directory=Default --app=https://teams.microsoft.com
+Terminal=false
+Type=Application
+Icon=microsoft-teams
+Categories=Network;Chat;

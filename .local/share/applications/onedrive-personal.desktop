@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=OneDrive (Personal)
+Exec=microsoft-edge --profile-directory="Profile 5" --app=https://onedrive.live.com/?id=root&cid=2A90C881CFB7E9FB
+Terminal=false
+Type=Application
+Icon=onedrive
+Categories=Network;FileTransfer;Cloud;

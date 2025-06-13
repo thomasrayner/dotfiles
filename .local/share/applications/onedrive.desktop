@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=OneDrive (Work)
+Exec=microsoft-edge --profile-directory=Default --app=https://microsoft-my.sharepoint-df.com/my
+Terminal=false
+Type=Application
+Icon=onedrive
+Categories=Network;FileTransfer;Cloud;

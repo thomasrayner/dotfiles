@@ -1,0 +1,16 @@
+deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main
+deb http://gb.archive.ubuntu.com/ubuntu jammy main universe
+deb http://gb.archive.ubuntu.com/ubuntu jammy-updates main universe
+deb http://gb.archive.ubuntu.com/ubuntu jammy-security main universe
+deb http://gb.archive.ubuntu.com/ubuntu jammy main
+deb [arch=amd64] https://pkg.surfacelinux.com/debian release main
+deb [trusted=yes] file:///home/thomas/Downloads/intune-portal ./
+deb [arch=amd64] https://packages.microsoft.com/repos/edge/ stable main
+deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main
+deb [signed-by=/etc/apt/keyrings/neovim-ppa-unstable-noble.gpg] https://ppa.launchpadcontent.net/neovim-ppa/unstable/ubuntu noble main
+deb http://packages.linuxmint.com xia main upstream import backport #id:linuxmint_main
+deb http://archive.ubuntu.com/ubuntu noble main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu noble-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu noble-backports main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse
+deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *

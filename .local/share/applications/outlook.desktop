@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Outlook (Work)
+Exec=microsoft-edge --profile-directory=Default --app=https://outlook.office.com/mail/
+Terminal=false
+Type=Application
+Icon=outlook
+Categories=Network;Email;

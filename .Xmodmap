@@ -1,0 +1,4 @@
+remove Lock = Caps_Lock
+keysym Caps_Lock = Alt_L
+add Mod1 = Alt_L
+
