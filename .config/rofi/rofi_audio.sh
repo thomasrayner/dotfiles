@@ -22,7 +22,7 @@ for info in "${sink_info[@]}"; do
     IFS='|' read -r sink_name sink_desc <<< "$info"
     [ -z "$sink_desc" ] && sink_desc="$sink_name"
 
-    label="  $sink_desc"
+    label="   $sink_desc"
     [ "$sink_name" = "$default_sink" ] && label="[✔️] $label"
 
     options+=("$label")
