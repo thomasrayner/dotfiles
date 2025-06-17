@@ -1,0 +1,1 @@
+deb [signed-by=/etc/apt/keyrings/neovim-ppa-unstable-noble.gpg] https://ppa.launchpadcontent.net/neovim-ppa/unstable/ubuntu noble main

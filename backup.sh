@@ -26,3 +26,16 @@ rsync -av --delete ~/.local/share/applications/ "$DOTFILES_DIR/.local/share/appl
 [ -f ~/personal/bg.png ] && cp -v ~/personal/bg.png "$DOTFILES_DIR/bg.png"
 
 echo "✅ Dotfiles backup complete."
+
+echo "📦 Saving manually installed APT packages..."
+comm -23 <(apt-mark showmanual | sort) <(gzip -dc /var/log/installer/initial-status.gz | awk '/^Package: / { print $2 }' | sort) > "$DOTFILES_DIR/manual_install.txt"
+
+echo "📜 Backing up all custom APT sources..."
+
+mkdir -p "$DOTFILES_DIR/apt-sources"
+cp -rv /etc/apt/sources.list.d "$DOTFILES_DIR/apt-sources/"
+cp -v /etc/apt/sources.list "$DOTFILES_DIR/apt-sources/sources.list"
+
+# Also copy any apt keyrings used
+mkdir -p "$DOTFILES_DIR/apt-keyrings"
+find /etc/apt/keyrings -type f -exec cp -v {} "$DOTFILES_DIR/apt-keyrings/" \;

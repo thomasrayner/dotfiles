@@ -49,3 +49,22 @@ if [ -f "$DOTFILES_DIR/bg.png" ]; then
 fi
 
 echo "✅ Restore complete. Backups saved at $BACKUP_DIR"
+
+if [ -f "$DOTFILES_DIR/manual_install.txt" ]; then
+    echo "📦 Restoring APT packages from manual_install.txt..."
+    xargs -a "$DOTFILES_DIR/apt-packages.txt" sudo apt install -y
+fi
+
+echo "📦 Restoring APT custom sources..."
+# Restore keyrings
+if [ -d "$DOTFILES_DIR/apt-keyrings" ]; then
+    sudo mkdir -p /etc/apt/keyrings
+    sudo cp -v "$DOTFILES_DIR/apt-keyrings/"* /etc/apt/keyrings/
+fi
+# Restore source lists
+if [ -d "$DOTFILES_DIR/apt-sources" ]; then
+    sudo cp -v "$DOTFILES_DIR/apt-sources/sources.list" /etc/apt/sources.list
+    sudo cp -v "$DOTFILES_DIR/apt-sources/"*.list /etc/apt/sources.list.d/
+fi
+
+sudo apt update
