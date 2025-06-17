@@ -134,3 +134,8 @@ bindsym Print exec flameshot gui
 
 #--- picom-trans ---
 bindsym $mod+Shift+o exec --no-startup-id picom-trans -c --toggle 100
+
+#--- Teams mute/webcam toggle ---
+bindsym Ctrl+Shift+z exec --no-startup-id ~/.config/i3/toggle_teams_mute.sh
+bindsym Ctrl+Shift+x exec --no-startup-id ~/.config/i3/toggle_teams_webcam.sh
+
