@@ -101,6 +101,7 @@ client.unfocused        #a1a1a1 #a1a1a1 #888888 #a1a1a1
 
 #--- Rofi launcher ---
 bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+d exec --no-startup-id ~/.config/rofi/rofi_audio.sh
 
 #--- Terminal (wezerm) ---
 bindsym $mod+Return exec wezterm
@@ -128,3 +129,8 @@ exec --no-startup-id ~/personal/scripts/loop.sh
 exec --no-startup-id feh --bg-scale ~/personal/bg.png
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
+#--- Screenshots ---
+bindsym Print exec flameshot gui
+
+#--- picom-trans ---
+bindsym $mod+Shift+o exec --no-startup-id picom-trans -c --toggle 100

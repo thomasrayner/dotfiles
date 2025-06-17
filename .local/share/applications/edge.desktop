@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Edge (Work)
+Exec=microsoft-edge --profile-directory="Default"
+Terminal=false
+Type=Application
+Icon=edge
+Categories=Network;FileTransfer;Cloud;
