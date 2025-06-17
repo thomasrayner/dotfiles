@@ -60,6 +60,7 @@ slurp
 software-properties-common
 spotify-client
 surface-control
+surface-dtx-daemon
 swaybg
 tree
 v4l2loopback-dkms
