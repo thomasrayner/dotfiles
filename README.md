@@ -19,6 +19,10 @@ You know what a dotfiles repo is.
   - A background image I always forget
 - Does *not* restore automatically. You must *choose violence* with `restore.sh`.
 
+- Neovim:
+  - This repo intentionally does not address my nvim config
+  - My nvim config is a separate repo: [thomasrayner/nvim](https://github.com/thomasrayner/nvim)
+
 ## 🧾 Scripts
 
 | Script         | Purpose                                                                 |
