@@ -1,9 +1,12 @@
 alacritty
 apt-transport-https
+azure-cli
 azuredatastudio
 brightnessctl
 cargo
 cheese
+code-insiders
+dotnet-sdk-8.0
 dunst
 feh
 ffmpeg
@@ -12,6 +15,7 @@ fonts-firacode
 fonts-jetbrains-mono
 freerdp2-x11
 fzf
+gcm
 git
 globalprotect
 gnome-control-center
@@ -28,6 +32,7 @@ libcamera-tools
 libicu70
 libnss3-tools
 libseat-dev
+libsecret-1-dev
 libwacom-surface
 libwebkit2gtk-4.0-37
 linux-headers-6.14.2-surface-1

@@ -9,5 +9,6 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 alias backupconfig='~/personal/dotfiles/backup.sh'
+alias code=code-insiders
 # Created by `pipx` on 2025-06-13 16:58:23
 export PATH="$PATH:/home/thomas/.local/bin"

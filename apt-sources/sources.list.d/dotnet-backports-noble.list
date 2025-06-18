@@ -1,0 +1,1 @@
+deb [signed-by=/etc/apt/keyrings/dotnet-backports-noble.gpg] https://ppa.launchpadcontent.net/dotnet/backports/ubuntu noble main
