@@ -1,4 +1,5 @@
 [global]
+history_length = 50
 monitor = 0
 follow = keyboard
 width = (0, 400)
@@ -35,7 +36,6 @@ frame_color = "#313e7c"
 timeout = 5
 format = "<b>💧 %s</b>\n%b"
 
-
 [urgency_normal]
 background = "#0e1b14"
 foreground = "#d1f7c4"
@@ -49,3 +49,14 @@ foreground = "#ffd6d6"
 frame_color = "#ff3c3c"
 timeout = 180
 format = "<b>🔥 %s</b>\n%b"
+
+[calendar_reminder_edge]
+appname = "Microsoft Edge"
+body = "*[0-9][0-9]:[0-9][0-9] *M*"
+urgency = critical
+format = "<b>📅  %s</b>\n%b"
+background = "#660066"
+foreground = "#ffff00"
+frame_color = "#ffd700"
+timeout = 0
+
