@@ -17,6 +17,10 @@ for file in "${dotfiles[@]}"; do
     ln -sf "$DOTFILES_DIR/$file" "$HOME/$file"
 done
 
+# zinit
+mkdir -p ~/.zinit
+cp -r "$DOTFILES_DIR/.zinit/bin" ~/.zinit/ 
+
 # Restore config files
 mkdir -p ~/.config
 config_files=(starship.toml mimeapps.list)
