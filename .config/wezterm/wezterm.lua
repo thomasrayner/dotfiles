@@ -34,7 +34,7 @@ return {
   },
 
   keys = {
-    { key = "Tab", mods = "ALT|SHIFT", action = wezterm.action.SpawnTab "CurrentPaneDomain" },
+    { key = "Return", mods = "ALT|SHIFT", action = wezterm.action.SpawnTab "CurrentPaneDomain" },
     { key = " ", mods = "ALT|SHIFT", action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" } },
     { key = " ", mods = "ALT", action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" } },
     { key = "Tab", mods = "ALT", action = wezterm.action.ActivateTabRelative(1) },
