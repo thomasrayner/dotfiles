@@ -29,7 +29,7 @@ for file in "${config_files[@]}"; do
 done
 
 # Restore config directories
-config_dirs=(i3 rofi polybar picom dunst)
+config_dirs=(i3 rofi polybar picom dunst wezterm)
 for dir in "${config_dirs[@]}"; do
     if [ -d "$HOME/.config/$dir" ] && [ ! -L "$HOME/.config/$dir" ]; then
         echo "📦 Backing up ~/.config/$dir"

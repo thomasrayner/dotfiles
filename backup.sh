@@ -31,6 +31,7 @@ run rsync -av --delete ~/.config/rofi/ "$DOTFILES_DIR/.config/rofi/"
 run rsync -av --delete ~/.config/polybar/ "$DOTFILES_DIR/.config/polybar/"
 run rsync -av --delete ~/.config/picom/ "$DOTFILES_DIR/.config/picom/"
 run rsync -av --delete ~/.config/dunst/ "$DOTFILES_DIR/.config/dunst/"
+run rsync -av --delete ~/.config/wezterm/ "$DOTFILES_DIR/.config/wezterm/"
 
 # Local applications (desktop entries)
 run rsync -av --delete ~/.local/share/applications/ "$DOTFILES_DIR/.local/share/applications/"
