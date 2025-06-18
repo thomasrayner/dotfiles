@@ -58,5 +58,5 @@ format = "<b>📅  %s</b>\n%b"
 background = "#660066"
 foreground = "#ffff00"
 frame_color = "#ffd700"
-timeout = 0
+timeout = 1800
 
