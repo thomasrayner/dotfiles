@@ -10,5 +10,14 @@ fi
 
 alias backupconfig='~/personal/dotfiles/backup.sh'
 alias code=code-insiders
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt share_history
+setopt inc_append_history
+setopt hist_ignore_dups
+setopt hist_reduce_blanks
+
 # Created by `pipx` on 2025-06-13 16:58:23
 export PATH="$PATH:/home/thomas/.local/bin"

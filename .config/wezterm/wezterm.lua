@@ -38,6 +38,15 @@ return {
     { key = " ", mods = "ALT|SHIFT", action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" } },
     { key = " ", mods = "ALT", action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" } },
     { key = "Tab", mods = "ALT", action = wezterm.action.ActivateTabRelative(1) },
-  }
+    { key = "n", mods = "ALT|SHIFT", action = wezterm.action.PromptInputLine {
+      description = "Rename Tab",
+      action = wezterm.action_callback(function(window, pane, line)
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end)
+    }
+  },
+},
 }
 
