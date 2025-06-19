@@ -8,7 +8,7 @@ return {
   font_size = 12.0,
 
   color_scheme = "Catppuccin Mocha",
-  window_background_opacity = 0.92,
+  window_background_opacity = 0.8,
   text_background_opacity = 1.0,
   enable_tab_bar = true,
   hide_tab_bar_if_only_one_tab = false,

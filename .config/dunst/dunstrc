@@ -28,6 +28,7 @@ show_indicators = yes
 icon_position = left
 max_icon_size = 64
 enable_recursive_icon_lookup = true
+ignore_dbusclose = true
 
 [urgency_low]
 background = "#0f1117"
