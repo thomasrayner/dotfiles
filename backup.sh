@@ -54,3 +54,6 @@ run mkdir -p "$DOTFILES_DIR/apt-keyrings"
 run find /etc/apt/keyrings -type f -exec cp -v {} "$DOTFILES_DIR/apt-keyrings/" \;
 
 echo "✅ Backup complete."
+
+echo "❓ Changes:"
+git -C ~/personal/dotfiles status -s --ahead-behind

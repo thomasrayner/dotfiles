@@ -5,8 +5,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # I don't know why I need this, but ssh/git doesn't work without it
 if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/mint_github 2> /dev/null
+    eval "$(ssh-agent -s)" > /dev/null 2>&1
+    ssh-add ~/.ssh/mint_github > /dev/null 2>&1
 fi
 
 #--- Aliases ---
