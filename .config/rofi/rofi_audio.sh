@@ -37,7 +37,7 @@ if [ ${#options[@]} -eq 0 ]; then
 fi
 
 # Show Rofi menu
-chosen=$(printf '%s\n' "${options[@]}" | rofi -dmenu -p "Select Audio Output")
+chosen=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -p "Select Audio Output")
 
 # Match and switch
 for i in "${!options[@]}"; do
