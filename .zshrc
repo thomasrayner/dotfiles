@@ -12,8 +12,9 @@ fi
 #--- Aliases ---
 alias backupconfig='~/personal/dotfiles/backup.sh'
 alias code=code-insiders
-alias ls='ls --color=auto'
+alias ls='ls -a --color=auto'
 alias ll='ls -la'
+alias lc='ls -la | lolcat'
 alias vim='nvim'
 
 #--- History ---
