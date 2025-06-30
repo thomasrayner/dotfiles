@@ -47,6 +47,7 @@ return {
       end)
     }
   },
+    { key = "s", mods = "ALT", action = wezterm.action.PaneSelect {alphabet = "hjklasdfg1234567890",},},
 },
 }
 

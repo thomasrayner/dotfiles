@@ -1,3 +1,5 @@
+#--- Display scaling ---
+exec --no-startup-id xrdb -merge ~/.Xresources
 #--- General Settings ---
 focus_follows_mouse no
 
@@ -141,3 +143,6 @@ bindsym Ctrl+Shift+x exec --no-startup-id ~/.config/i3/toggle_teams_webcam.sh
 
 #--- Wacom Lock to Center Display ---
 exec --no-startup-id ~/.config/i3/wacom_setup.sh
+
+#--- Arrange monitors ---
+exec_always ~/.config/i3/arrange-monitors.sh

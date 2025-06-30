@@ -67,6 +67,6 @@ fi
 sudo apt update
 
 echo "📦 Restoring APT packages from manual_install.txt..."
-xargs -a "$DOTFILES_DIR/apt-packages.txt" sudo apt install -y
+xargs -a "$DOTFILES_DIR/manual_install.txt" sudo apt install -y
 
 echo "✅ Restore complete. Backups saved at $BACKUP_DIR"

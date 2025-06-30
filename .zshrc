@@ -46,3 +46,14 @@ bindkey '^R' history-incremental-search-backward
 
 # Created by `pipx` on 2025-06-13 16:58:23
 export PATH="$PATH:/home/thomas/.local/bin"
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+export PATH="$HOME/bin:$PATH"
