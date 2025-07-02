@@ -61,3 +61,12 @@ foreground = "#ffff00"
 frame_color = "#ffd700"
 timeout = 1800
 
+[meeting_started]
+appname = "Microsoft Edge"
+body = "*started\smeeting*"
+urgency = critical
+format = "<b>⚠️  %s</b>\n%b"
+background = "#fcba03"
+foreground = "#036bfc"
+frame_color = "#ffd700"
+timeout = 1800
