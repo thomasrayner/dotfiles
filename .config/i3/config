@@ -105,8 +105,8 @@ client.unfocused        #a1a1a1 #a1a1a1 #888888 #a1a1a1
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d exec --no-startup-id ~/.config/rofi/rofi_audio.sh
 
-#--- Terminal (wezerm) ---
-bindsym $mod+Return exec wezterm
+#--- Terminal ---
+bindsym $mod+Return exec ghostty
 
 #--- Xmodmap ---
 exec --no-startup-id xmodmap ~/.Xmodmap

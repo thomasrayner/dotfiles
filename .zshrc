@@ -44,7 +44,6 @@ zstyle ':fzf-tab:*' fzf-preview 'echo {}'
 #--- Smart History Search ---
 bindkey '^R' history-incremental-search-backward
 
-
 # Created by `pipx` on 2025-06-13 16:58:23
 export PATH="$PATH:/home/thomas/.local/bin"
 
@@ -58,3 +57,10 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 export PATH="$HOME/bin:$PATH"
+
+#--- Fuzzy finding ---
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_CTRL_T_OPTS="
+  --preview 'batcat --style=numbers --color=always {}' \
+  --bind 'ctrl-/:change-preview-window(down|hidden)'"
+
