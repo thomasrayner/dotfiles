@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SEARCH_DIRS=("$HOME/git" "$HOME/personal")
+PANE_ID=$(tmux display -p '#{pane_id}')
+PROJECTS=$(find "${SEARCH_DIRS[@]}" -maxdepth 2 -mindepth 1 -type d 2>/dev/null || true)
+
+if [ -z "$PROJECTS" ]; then
+  exit 0
+fi
+
+SELECTED=$(echo "$PROJECTS" |
+  fzf --prompt="Select a project > " \
+      --preview="ls -la {}" \
+      --tmux=right,80%,70%) || exit 0
+
+if [ -z "$SELECTED" ]; then
+  exit 0
+fi
+
+CMD="cd \"$SELECTED\" && nvim ."
+tmux send-keys -t "$PANE_ID" "$CMD" C-m

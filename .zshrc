@@ -64,6 +64,15 @@ export FZF_CTRL_T_OPTS="
   --preview 'batcat --style=numbers --color=always {}' \
   --bind 'ctrl-/:change-preview-window(down|hidden)'"
 
+cc() {
+  local dir
+  dir=$(find ~ -name '.*' -o -type d -maxdepth 7 2>/dev/null | fzf --preview 'ls -la {}') && cd "$dir"
+}
+ci() {
+  local dir
+  dir=$(find ./ -name '.*' -o -type d -maxdepth 7 2>/dev/null | fzf --preview 'ls -la {}') && cd "$dir"
+}
+
 yolo() {
   echo -n "🔧 Commit message: "
   read msg
