@@ -64,3 +64,13 @@ export FZF_CTRL_T_OPTS="
   --preview 'batcat --style=numbers --color=always {}' \
   --bind 'ctrl-/:change-preview-window(down|hidden)'"
 
+yolo() {
+  echo -n "🔧 Commit message: "
+  read msg
+  if [ -z "$msg" ]; then
+    echo "🚫 Empty commit message. Aborted."
+    return 1
+  fi
+  git add -A && git commit -m "$msg" && git push
+}
+
