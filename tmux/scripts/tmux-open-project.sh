@@ -3,7 +3,7 @@ set -euo pipefail
 
 SEARCH_DIRS=("$HOME/git" "$HOME/personal")
 PANE_ID=$(tmux display -p '#{pane_id}')
-PROJECTS=$(find "${SEARCH_DIRS[@]}" -maxdepth 2 -mindepth 1 -type d 2>/dev/null || true)
+PROJECTS=$(find "${SEARCH_DIRS[@]}" -maxdepth 3 -mindepth 1 -type d 2>/dev/null || true)
 
 if [ -z "$PROJECTS" ]; then
   exit 0
