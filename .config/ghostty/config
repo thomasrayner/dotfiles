@@ -15,3 +15,5 @@ mouse-scroll-multiplier = 2
 
 shell-integration = "zsh"
 initial-command = "tmux attach || tmux new -s main"
+
+confirm-close-surface = false
