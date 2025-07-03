@@ -6,7 +6,7 @@ cd "$(tmux display -p -F "#{pane_current_path}")"
 
 branch=$(git for-each-ref --sort=-committerdate \
   --format="%(refname:short)" refs/heads/ |
-  fzf --tmux=right,70%,60% --reverse --ansi \
+  fzf --tmux=right,95%,95% --reverse --ansi \
     --header="Checkout branch" \
     --preview="git log -n5 --oneline --color=auto {}") || exit 0
 

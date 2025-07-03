@@ -12,7 +12,7 @@ fi
 SELECTED=$(echo "$PROJECTS" |
   fzf --prompt="Select a project > " \
       --preview="ls -la {}" \
-      --tmux=right,80%,70%) || exit 0
+      --tmux=right,95%,95%) || exit 0
 
 if [ -z "$SELECTED" ]; then
   exit 0
