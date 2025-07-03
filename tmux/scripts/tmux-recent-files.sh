@@ -19,17 +19,21 @@ MENU=$(echo "$FILES" | while read -r full; do
   printf "%-40s │ %s\n" "$label" "$full"
 done)
 
-SELECTED=$(echo "$MENU" |
-  fzf --prompt="Recent files > " \
-      --preview="bat --style=numbers --color=always --line-range=:500 {2}" \
-      --with-nth=1 \
-      --delimiter="│" \
-      --height=70% --layout=reverse \
-      --tmux=right,95%,95%) || {
-  exit 0
-}
+set +e
+SELECTED=$(echo "$MENU" | fzf \
+  --prompt="Recent files > " \
+  --preview="bat --style=numbers --color=always --line-range=:500 {2}" \
+  --with-nth=1 \
+  --delimiter="│" \
+  --height=70% --layout=reverse \
+  --tmux=right,95%,95%)
+FZF_EXIT=$?
+set -e
 
-# Extract full path from the selected line
+if [ "$FZF_EXIT" -ne 0 ] || [ -z "$SELECTED" ]; then
+  exit 0
+fi
+
 FULL_PATH=$(echo "$SELECTED" | cut -d'│' -f2- | sed 's/^ *//')
 
 if [ -z "$FULL_PATH" ]; then
