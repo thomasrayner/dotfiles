@@ -63,7 +63,7 @@ timeout = 1800
 
 [meeting_started]
 appname = "Microsoft Edge"
-body = "*started\sthe\smeeting*"
+body = "*started the meeting*"
 urgency = critical
 format = "<b>⚠️  %s</b>\n%b"
 background = "#fcba03"

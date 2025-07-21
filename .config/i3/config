@@ -41,10 +41,10 @@ bindsym $mod+Shift+j move down
 
 # Resize window
 mode "resize" {
-    bindsym $mod+minus resize shrink width 10 px or 10 ppt
-    bindsym $mod+equal resize grow width 10 px or 10 ppt
-    bindsym $mod+Shift+equal resize grow height 10 px or 10 ppt
-    bindsym $mod+Shift+minus resize shrink height 10 px or 10 ppt
+    bindsym minus resize shrink width 10 px or 10 ppt
+    bindsym equal resize grow width 10 px or 10 ppt
+    bindsym Shift+equal resize grow height 10 px or 10 ppt
+    bindsym Shift+minus resize shrink height 10 px or 10 ppt
     bindsym Return mode "default"
 }
 bindsym $mod+r mode "resize"
@@ -52,6 +52,8 @@ bindsym $mod+r mode "resize"
 # Floating / tiling / fullscreen
 bindsym $mod+Shift+f floating toggle
 bindsym $mod+g fullscreen toggle
+bindsym $mod+t layout tabbed
+bindsym $mod+i layout toggle split
 
 # Close window
 bindsym $mod+Shift+w kill
@@ -98,8 +100,13 @@ for_window [window_role="pop-up"] floating enable
 for_window [title="Picture-in-Picture"] floating enable
 
 #--- Appearance ---
-client.focused          #8dbcff #8dbcff #ffffff #8dbcff
-client.unfocused        #a1a1a1 #a1a1a1 #888888 #a1a1a1
+# class                      border    background text      indicator  child_border
+client.focused               #2fb28d   #2fb28d    #ffffff   #72f1b8    #2fb28d
+client.focused_inactive      #2a2a2a   #2a2a2a    #ffffff   #2a2a2a    #2a2a2a
+client.focused_tab_title     #72f1b8   #135F49    #ffffff   #72f1b8    #2fb28d                              
+client.unfocused             #1e1e1e   #1e1e1e    #2fb28d   #1e1e1e    #1e1e1e
+client.urgent                #ff5c5c   #ff5c5c    #ffffff   #ff5c5c    #ff5c5c
+client.placeholder           #000000   #000000    #ffffff   #000000    #000000
 
 #--- Rofi launcher ---
 bindsym $mod+d exec --no-startup-id rofi -show drun
