@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-SEARCH_DIRS=("$HOME/git" "$HOME/personal")
+SEARCH_DIRS=("$HOME/git" "$HOME/personal" "$HOME/work")
 PANE_ID=$(tmux display -p '#{pane_id}')
 
 FILES=$(find "${SEARCH_DIRS[@]}" \

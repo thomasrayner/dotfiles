@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SEARCH_DIRS=("$HOME/git" "$HOME/personal")
+SEARCH_DIRS=("$HOME/git" "$HOME/personal" "$HOME/work")
 PANE_ID=$(tmux display -p '#{pane_id}')
 PROJECTS=$(find "${SEARCH_DIRS[@]}" -maxdepth 3 -mindepth 1 -type d 2>/dev/null || true)
 
