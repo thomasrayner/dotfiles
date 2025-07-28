@@ -13,7 +13,7 @@ fi
 alias backupconfig='~/personal/dotfiles/backup.sh'
 alias code=code-insiders
 alias ls='ls -a --color=auto'
-alias ll='ls -la'
+alias ll='ls -lah'
 alias lc='ls -la | lolcat'
 alias vim='nvim'
 
@@ -55,8 +55,10 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-### End of Zinit's installer chunk
+
+#--- Path additions ---
 export PATH="$HOME/bin:$PATH"
+export PATH="$(go env GOPATH)/bin:$PATH"
 
 #--- Fuzzy finding ---
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
