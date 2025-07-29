@@ -1,7 +1,25 @@
 eval "$(starship init zsh)"
-export TERMINAL=wezterm
-export TERM=xterm-256color
-export PATH="$HOME/.local/bin:$PATH"
+
+function starship_transient_prompt_func() {
+  starship module character  # Minimal prompt for past commands
+}
+
+function set_full_prompt() {
+  PROMPT="$(starship prompt)"
+  zle && zle .reset-prompt  # Only reset prompt if ZLE is active
+}
+
+function set_transient_prompt() {
+  PROMPT="$(starship_transient_prompt_func)"
+  zle && zle .reset-prompt  # Only reset prompt if ZLE is active
+}
+
+# Ensure add-zle-hook-widget is available
+autoload -Uz add-zle-hook-widget
+
+# Register ZLE hooks
+add-zle-hook-widget line-init set_full_prompt
+add-zle-hook-widget line-finish set_transient_prompt
 
 # I don't know why I need this, but ssh/git doesn't work without it
 if [ -z "$SSH_AUTH_SOCK" ]; then
