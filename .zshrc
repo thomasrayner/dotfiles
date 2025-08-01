@@ -86,7 +86,7 @@ export FZF_CTRL_T_OPTS="
 
 cc() {
   local dir
-  dir=$(find ~ -name '.*' -path '*/.git' -prune -o -type d -maxdepth 7 2>/dev/null | fzf --preview 'ls -la {}') && cd "$dir"
+  dir=$(find ~ /mnt -name '.*' -path '*/.git' -prune -o -type d -maxdepth 7 2>/dev/null | fzf --preview 'ls -la {}') && cd "$dir"
 }
 ci() {
   local dir
