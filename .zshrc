@@ -62,6 +62,9 @@ zstyle ':fzf-tab:*' fzf-preview 'echo {}'
 #--- Smart History Search ---
 bindkey '^R' history-incremental-search-backward
 
+#--- Ctrl+Alt+Backspace for deleting a word ---
+bindkey "^[^H" backward-kill-word
+
 # Created by `pipx` on 2025-06-13 16:58:23
 export PATH="$PATH:/home/thomas/.local/bin"
 
