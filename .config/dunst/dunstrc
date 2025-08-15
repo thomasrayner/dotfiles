@@ -36,7 +36,7 @@ foreground = "#b5cfff"
 frame_color = "#313e7c"
 timeout = 5
 format = "<b>💧 %s</b>\n%b"
-override_dbus_timeout = 0
+override_dbus_timeout = 5
 
 [urgency_normal]
 background = "#0e1b14"
@@ -44,7 +44,7 @@ foreground = "#d1f7c4"
 frame_color = "#33cc88" 
 timeout = 10
 format = "<b>🌿 %s</b>\n%b"
-override_dbus_timeout = 0
+override_dbus_timeout = 10
 
 [urgency_critical]
 background = "#1a0000"
