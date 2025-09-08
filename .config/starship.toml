@@ -14,8 +14,9 @@ disabled = true
 # my config
 
 [cmd_duration]
-min_time = 100
+min_time = 1
 format = '[](fg:#035306)[$duration](bold fg:green bg:#035306)[](fg:#035306)'
+disabled = false
 
 [directory]
 truncation_length = 150

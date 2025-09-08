@@ -127,7 +127,7 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 #--- Notifications ---
 exec --no-startup-id dunst
 bindsym $mod+Shift+n exec --no-startup-id sh -c 'dunstctl set-paused toggle'
-# bindsym $mod+Shift+n exec --no-startup-id sh -c 'killall dunst; dunst &'
+bindsym $mod+Shift+g exec --no-startup-id sh -c 'dunstctl close-all'
 
 #--- Emojis ---
 bindsym Mod4+period exec --no-startup-id ~/.config/rofi/emoji_pick.sh
