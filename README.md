@@ -1,5 +1,7 @@
 > Restore is super broken right now.
 
+> arch-hypr dotfiles are just tossed together for fun
+
 # dotfiles
 
 Welcome to the sacred tomb of my Linux Mint config.

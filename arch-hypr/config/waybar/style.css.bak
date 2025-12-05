@@ -1,0 +1,83 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(10, 10, 10, 0.45);
+    border-bottom: 1px solid rgba(114, 241, 184, 0.35);
+    color: #ffffff;
+
+    padding: 3px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/* --- WORKSPACES --- */
+
+#workspaces button {
+    padding: 0 10px;
+    margin: 4px;
+    background: rgba(255, 136, 0, 0.25);
+    border-radius: 6px;
+    color: #ffffff;
+    border: 1px solid rgba(114, 241, 184, 0.20);
+    transition: all 0.15s ease-in-out;
+}
+
+#workspaces button:hover {
+    background: rgba(114, 241, 184, 0.15);
+}
+
+#workspaces button.active {
+    background: rgba(114, 241, 184, 0.30);
+    border-color: rgba(114, 241, 184, 0.60);
+    color: #ffffff;
+}
+
+/* --- WINDOW TITLE --- */
+
+#window {
+    padding: 4px 14px;
+    margin: 4px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.20);
+    color: #72f1b8;
+    font-weight: 500;
+}
+
+/* --- MODULE BASE STYLE --- */
+
+#cpu, #memory, #network, #bluetooth, #pulseaudio, #clock, #tray {
+    padding: 4px 5px;
+    margin: 4px 4px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.20);
+    color: #ffffff;
+}
+
+/* --- SPECIFIC HIGHLIGHTS --- */
+
+#network.connected {
+    color: #72f1b8;
+}
+
+#bluetooth.connected {
+    color: #72f1b8;
+}
+
+#pulseaudio {
+    color: #ffffff;
+}
+
+#pulseaudio.muted {
+    color: #ff5c5c;
+}
+
+/* Clock pop highlight */
+
+#clock {
+    color: #ff9900;
+    font-weight: 600;
+}

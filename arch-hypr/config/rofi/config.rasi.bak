@@ -1,0 +1,116 @@
+* {
+  font: "Fira Sans 12";
+
+  // Core colors
+  background:               #0e1612;        // dark evergreen
+  background-alt:           #121f18;        // slightly lighter variant
+  foreground:               #a6d3bc;        // soft mint-sage
+  selected:                 #2d5941;        // deep jade green
+  border-color:             #4caf7b;        // crisp mint accent
+  border-radius:            6px;
+
+  // Prevent light tones from leaking in
+  lightbg:                  #0e1612;
+  lightfg:                  #a6d3bc;
+  selected-normal-background: @selected;
+  selected-normal-foreground: #ffffff;
+  alternate-normal-background: @background-alt;
+  alternate-normal-foreground: @foreground;
+
+  spacing: 5px;
+  padding: 10px 15px;
+}
+
+window {
+  background-color: @background;
+  border: 2px;
+  border-color: @border-color;
+  border-radius: @border-radius;
+}
+
+mainbox {
+  background-color: @background;
+  padding: 10px;
+  spacing: 10px;
+}
+
+listview {
+  lines: 10;
+  columns: 1;
+  spacing: 4px;
+  scrollbar: false;
+  fixed-height: true;
+  border: 0;
+}
+
+element {
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: @background-alt;
+  text-color: @foreground;
+}
+
+element selected {
+  background-color: @selected;
+  text-color: #ffffff;
+}
+
+element selected.normal {
+  background-color: @selected;
+  text-color: #ffffff;
+}
+
+element alternate.normal {
+  background-color: @background-alt;
+  text-color: @foreground;
+}
+
+element selected.active {
+  background-color: @selected;
+  text-color: #ffffff;
+}
+
+element alternate.active {
+  background-color: @background-alt;
+  text-color: @foreground;
+}
+
+element alternate.urgent {
+  background-color: @background-alt;
+  text-color: @foreground;
+}
+
+element selected.urgent {
+  background-color: @selected;
+  text-color: #ffffff;
+}
+
+entry {
+  padding: 8px 12px;
+  background-color: #172820;
+  text-color: @foreground;
+  placeholder-color: #6d9c87;
+  border-radius: 4px;
+}
+
+prompt {
+  text-color: @selected;
+}
+
+textbox {
+  text-color: @foreground;
+}
+
+scrollbar {
+  width: 4px;
+  handle-width: 8px;
+  handle-color: @foreground;
+  border: 0;
+}
+
+colors {
+  background: @background;
+  background-alt: @background-alt;
+  foreground: @foreground;
+  highlight: @selected;
+}
