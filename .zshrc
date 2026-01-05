@@ -69,6 +69,25 @@ bindkey "^[^H" backward-kill-word
 # Starship prompt
 eval "$(starship init zsh)"
 
+autoload -Uz add-zle-hook-widget
+
+_l_full_prompt() {
+  PROMPT="$(starship prompt)"
+}
+
+_l_transient_prompt() {
+  PROMPT="$(starship module character)"
+}
+
+# - When a new line starts: full prompt
+# - When you accept the line: replace previous prompt with transient
+_l_line_init()   { _l_full_prompt; zle reset-prompt; }
+_l_line_finish() { _l_transient_prompt; zle reset-prompt; }
+
+add-zle-hook-widget line-init   _l_line_init
+add-zle-hook-widget line-finish _l_line_finish
+
+
 # FZF
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 export FZF_CTRL_T_OPTS="
