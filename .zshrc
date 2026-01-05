@@ -1,42 +1,60 @@
-eval "$(starship init zsh)"
+# Basics / sanity
+setopt prompt_subst
+setopt interactive_comments
 
-function starship_transient_prompt_func() {
-  starship module character  # Minimal prompt for past commands
-}
+# Delete key
+bindkey "${terminfo[kdch1]}" delete-char
 
-function set_full_prompt() {
-  PROMPT="$(starship prompt)"
-  zle && zle .reset-prompt  # Only reset prompt if ZLE is active
-}
+# PATH
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH" # pipx etc.
+export PATH="$(go env GOPATH 2>/dev/null)/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$PATH"
 
-function set_transient_prompt() {
-  PROMPT="$(starship_transient_prompt_func)"
-  zle && zle .reset-prompt  # Only reset prompt if ZLE is active
-}
+# NVM (keep before compinit so it can add completions if it wants)
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
 
-# Ensure add-zle-hook-widget is available
-autoload -Uz add-zle-hook-widget
+# Zinit
+source "$HOME/.zinit/bin/zinit.zsh"
 
-# Register ZLE hooks
-add-zle-hook-widget line-init set_full_prompt
-add-zle-hook-widget line-finish set_transient_prompt
+# Annexes
+zinit light-mode for \
+  zdharma-continuum/zinit-annex-as-monitor \
+  zdharma-continuum/zinit-annex-bin-gem-node \
+  zdharma-continuum/zinit-annex-patch-dl \
+  zdharma-continuum/zinit-annex-rust
 
-# I don't know why I need this, but ssh/git doesn't work without it
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -s)" > /dev/null 2>&1
-    ssh-add ~/.ssh/mint_github > /dev/null 2>&1
-fi
+# Completion system
+autoload -Uz compinit
+# Use a cached compdump - speeds startup and reduces flakiness
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump"
 
-#--- Aliases ---
-alias backupconfig='~/personal/dotfiles/backup.sh'
-alias code=code-insiders
-alias ls='ls -a --color=auto'
-alias ll='ls -lah'
-alias lc='ls -la | lolcat'
-alias vim='nvim'
+# More permissive matching
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
-#--- History ---
-HISTFILE=~/.zsh_history
+# Plugins
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+
+# fzf-tab
+zinit light Aloxaf/fzf-tab
+zstyle ':fzf-tab:*' fzf-preview 'echo {}'
+
+# Autosuggestions expansion
+zinit light zsh-users/zsh-autosuggestions
+
+# Set autosuggest strategy explicitly
+typeset -gA _l_AUTOSUGGEST
+_l_AUTOSUGGEST[strategy]=history
+ZSH_AUTOSUGGEST_STRATEGY=history
+
+# Re-run compinit now that zsh-completions is on $fpath
+compinit -C -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump"
+
+# History
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt share_history
@@ -44,71 +62,86 @@ setopt inc_append_history
 setopt hist_ignore_dups
 setopt hist_reduce_blanks
 
-#--- Zinit Setup ---
-source "$HOME/.zinit/bin/zinit.zsh"
-
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light Aloxaf/fzf-tab
-
-#--- Completion Tuning ---
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-autoload -Uz compinit
-compinit
-zstyle ':completion:*' menu select
-zstyle ':fzf-tab:*' fzf-preview 'echo {}'
-
-#--- Smart History Search ---
+# Keybinds
 bindkey '^R' history-incremental-search-backward
-
-#--- Ctrl+Alt+Backspace for deleting a word ---
 bindkey "^[^H" backward-kill-word
 
-# Created by `pipx` on 2025-06-13 16:58:23
-export PATH="$PATH:/home/thomas/.local/bin"
+# Starship prompt
+eval "$(starship init zsh)"
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
-
-#--- Path additions ---
-export PATH="$HOME/bin:$PATH"
-export PATH="$(go env GOPATH)/bin:$PATH"
-
-#--- Fuzzy finding ---
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# FZF
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 export FZF_CTRL_T_OPTS="
   --preview 'batcat --style=numbers --color=always {}' \
   --bind 'ctrl-/:change-preview-window(down|hidden)'"
 
+# Aliases
+alias code=code-insiders
+alias ls='ls -a --color=auto'
+alias ll='ls -lah'
+alias lc='ls -la | lolcat'
+alias vim='nvim'
+
+# Functions
 cc() {
   local dir
-  dir=$(find ~ /mnt -name '.*' -path '*/.git' -prune -o -type d -maxdepth 7 2>/dev/null | fzf --preview 'ls -la {}') && cd "$dir"
+  dir=$(find ~ /mnt -name '.*' -path '*/.git' -prune -o -type d -maxdepth 7 2>/dev/null \
+    | fzf --preview 'ls -la {}') && cd "$dir"
 }
+
 ci() {
   local dir
-  dir=$(find ./ -name '.*' -path '*/.git' -prune -o -type d -maxdepth 7 2>/dev/null | fzf --preview 'ls -la {}') && cd "$dir"
+  dir=$(find ./ -name '.*' -path '*/.git' -prune -o -type d -maxdepth 7 2>/dev/null \
+    | fzf --preview 'ls -la {}') && cd "$dir"
 }
 
 yolo() {
   echo -n "🔧 Commit message: "
-  read msg
-  if [ -z "$msg" ]; then
-    echo "🚫 Empty commit message. Aborted."
-    return 1
-  fi
+  read -r msg
+  [[ -z "$msg" ]] && { echo "🚫 Empty commit message. Aborted."; return 1; }
   git add -A && git commit -m "$msg" && git push
 }
-#
-# opencode
-export PATH=/home/thomas/.opencode/bin:$PATH
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Autosuggest toggles
+autosuggest_on()  { ZSH_AUTOSUGGEST_MANUAL_REBIND=1; _zsh_autosuggest_start; }
+autosuggest_off() { _zsh_autosuggest_stop; }
+
+autosuggest_toggle() {
+  if (( ${+ZSH_AUTOSUGGEST_ACTIVE} )) && [[ "$ZSH_AUTOSUGGEST_ACTIVE" == "1" ]]; then
+    autosuggest_off
+    echo "🧠 autosuggest: OFF"
+  else
+    autosuggest_on
+    echo "🧠 autosuggest: ON"
+  fi
+}
+
+# Toggle what autosuggestions are sourced from:
+# - history: only past commands
+# - completion: suggest based on completion engine
+# - (optional) both: history completion
+autosuggest_source_history() {
+  ZSH_AUTOSUGGEST_STRATEGY=history
+  _l_AUTOSUGGEST[strategy]=history
+  echo "🧠 autosuggest source: HISTORY"
+}
+
+autosuggest_source_completion() {
+  ZSH_AUTOSUGGEST_STRATEGY=completion
+  _l_AUTOSUGGEST[strategy]=completion
+  echo "🧠 autosuggest source: COMPLETION"
+}
+
+autosuggest_source_both() {
+  ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+  _l_AUTOSUGGEST[strategy]=both
+  echo "🧠 autosuggest source: HISTORY+COMPLETION"
+}
+
+# Auto-start tmux (last-ish)
+if [[ -z "$TMUX" && -t 1 ]]; then
+  tmux attach-session -t main 2>/dev/null || tmux new-session -s main
+fi
+
+# The hotness
+fastfetch
