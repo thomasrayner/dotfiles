@@ -33,6 +33,32 @@ compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump"
 # More permissive matching
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
+zstyle ':completion:*' completer \
+  _expand_alias \
+  _complete \
+  _ignored \
+  _match \
+  _approximate
+zstyle ':completion:*:approximate:*' max-errors 2
+
+# Let SSH completion consider more host sources
+zstyle ':completion:*:*:ssh:*' tag-order hosts
+zstyle ':completion:*:hosts' hosts \
+  $(awk '{print $1}' ~/.ssh/known_hosts 2>/dev/null | sed 's/,.*//' | sort -u) \
+  $(awk '/^Host /{for(i=2;i<=NF;i++) if($i!="*" && $i!="?") print $i}' ~/.ssh/config 2>/dev/null) \
+  $(awk '!/^#/{print $2}' /etc/hosts 2>/dev/null | sort -u)
+
+# Better lists
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-separator '—'
+zstyle ':completion:*' menu select=2
+
+# Don’t be shy about listing
+setopt auto_list
+setopt auto_menu
+setopt complete_in_word
+unsetopt menu_complete
 
 # Plugins
 zinit light zsh-users/zsh-completions
@@ -44,6 +70,14 @@ zstyle ':fzf-tab:*' fzf-preview 'echo {}'
 
 # Autosuggestions expansion
 zinit light zsh-users/zsh-autosuggestions
+
+# Ensure standard completion function dirs are in fpath
+fpath=(
+  /usr/local/share/zsh/site-functions
+  /usr/share/zsh/site-functions
+  /usr/share/zsh/functions
+  $fpath
+)
 
 # Set autosuggest strategy explicitly
 typeset -gA _l_AUTOSUGGEST
